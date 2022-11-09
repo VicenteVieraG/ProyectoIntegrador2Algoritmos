@@ -2,6 +2,7 @@
 #include <string>
 #include "functions.h"
 #include "point.h"
+#include "edge.h"
 
 //Declarations
 
@@ -12,7 +13,6 @@ void readInput(unsigned int& colonias, int** distancias, int** flujo, point* poi
 	std::string aux;
 	point P;
 	int it = 0;
-	std::cout<<"DESDEPRIMERA: "<<distancias<<std::endl;
 
 	//Initialize matrixes
 	for(unsigned int i=0;i<colonias;i++){
@@ -59,10 +59,38 @@ void readInput(unsigned int& colonias, int** distancias, int** flujo, point* poi
 	}
 }
 
+//Prints the matrix based in the size
 void printMatrix(int** M, unsigned int& size){
 	for(int i=0;i<size;i++){
 		for(int j=0;j<size;j++){
 			std::cout<<M[i][j]<<std::endl;
 		}
 	}
+}
+
+//Returns the root node of the Disjoint set data of nodes
+unsigned int Root(unsigned int* V, unsigned int i){
+	//Follos the parents tree until the node whose parent it´s it self
+	if(V[i]==i)return i;
+	return Root(V, V[i]);
+}
+
+//Makes the operation Union(A,B) in the Vertex array
+void Union(unsigned int* V, edge E){
+	//Get the nodes of the edge
+	unsigned int A = E.src;
+	unsigned int B = E.dest;
+	//Make B the parent of A
+	V[Root(V, A)] = Root(V, B);
+}
+
+//Finds if there is a cycle.
+//If there is a cycle it returns true, else false.
+//If both node´s root are the same means they are in the same subset therefore, there is a cycle.
+bool Find(unsigned int* V, edge E){
+	//Get the nodes of the edge
+	unsigned int A = E.src;
+	unsigned int B = E.dest;
+	if(Root(V, A) == Root(V, B))return true;
+	return false;
 }

@@ -7,7 +7,7 @@ main: main.o PrimeraParte.o
 main.o: main.cpp functions.h point.h
 	g++ -c main.cpp
 
-PrimeraParte.o: PrimeraParte.cpp functions.h point.h
+PrimeraParte.o: PrimeraParte.cpp functions.h point.h edge.h
 	g++ -c PrimeraParte.cpp
 
 clean:
