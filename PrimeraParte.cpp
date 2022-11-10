@@ -10,6 +10,7 @@
 //Declarations
 
 //Reads the specified input and returns two matrixes with the data and an array of points
+//Complexity: O(n+n^2+n^2+n*m) => O(n(1+2n+m)) => O(n^2+nm)
 void readInput(unsigned int& colonias, unsigned int** distancias, unsigned int** flujo, point* points){
 	//Variables
 	std::string coordenada;
@@ -59,6 +60,7 @@ void readInput(unsigned int& colonias, unsigned int** distancias, unsigned int**
 }
 
 //Prints the matrix based in the size
+//Complexity: O(n^2)
 void printMatrix(const unsigned int** M, const unsigned int& size){
 	for(int i=0;i<size;i++){
 		for(int j=0;j<size;j++){
@@ -68,6 +70,7 @@ void printMatrix(const unsigned int** M, const unsigned int& size){
 }
 
 //Returns the root node of the Disjoint set data of nodes
+//Complexity: O(n)
 unsigned int Root(const unsigned int* V, const unsigned int& i){
 	//Follos the parents tree until the node whose parent it´s it self
 	if(V[i]==i)return i;
@@ -75,6 +78,7 @@ unsigned int Root(const unsigned int* V, const unsigned int& i){
 }
 
 //Makes the operation Union(A,B) in the Vertex array
+//Complexity: O(2n) => O(n)
 void Union(unsigned int* V, const edge& E){
 	//Get the nodes of the edge
 	unsigned int A = E.src;
@@ -87,6 +91,7 @@ void Union(unsigned int* V, const edge& E){
 //Finds if there is a cycle.
 //If there is a cycle it returns true, else false.
 //If both node´s root are the same means they are in the same subset therefore, there is a cycle.
+//Complexity: O(2n)
 bool Find(unsigned int* V, edge E){
 	//Get the nodes of the edge
 	unsigned int A = E.src;
@@ -108,10 +113,13 @@ void edge::set(const unsigned int& src, const unsigned int& dest, const unsigned
 }
 
 //Kruskal's algorithm for minimun spanning tree
+//Main algorithm complexity: O(|E|(4|V|+log(|E|)))
+//Complete function complexity: O(|V|+|E|log(|E|)+|E|(4|V|+log(|E|))+|V|) => O(2|V|+2|E|log(|E|)+4|E||V|) => O(2(|V|+|E|+|E|log(|E|)+2|E||V|)) => O(|V|+|E|+|E|log(|E|)+|E||V|) => O(|E|(|V|+1+log(|E|)+|V|)) => O(|E|(|V|+log(|E|)+|V|)) => O(|E|(|V|+log(|E|))) => O(|E||V|+|E|log(|E|))
 void Kruskal(unsigned int** M, const unsigned int& size){
 	//Variavles
 	edge aux;
 	int pqsize;
+	char E = 65;
 
 	//Min heap for edges
 	std::priority_queue<edge,std::vector<edge>,comparator> pq;
@@ -141,7 +149,8 @@ void Kruskal(unsigned int** M, const unsigned int& size){
 		pq.pop();
 	}
 
+	//Print the edges
 	for(int i=0;i<size;i++){
-		std::cout<<i<<": "<<V[i]<<std::endl;
+		std::cout<<"("<<char(E+i)<<","<<char(E+V[i])<<")"<<std::endl;
 	}
 }
