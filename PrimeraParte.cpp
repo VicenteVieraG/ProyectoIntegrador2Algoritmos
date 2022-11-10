@@ -100,35 +100,39 @@ bool comparator::operator()(const edge& E, const edge& E2){
 	return E.weight>E2.weight;
 }
 
-std::priority_queue<edge,std::vector<edge>,comparator> pq;
+//Set edge overloaded
+void edge::set(const unsigned int& src, const unsigned int& dest, const unsigned int& weight){
+	this->src = src;
+	this->dest = dest;
+	this->weight = weight;
+}
 
-void test(){
-	edge E(1,2,1);
-	edge E2(1,2,2);
-	edge E3(1,2,3);
-	edge E4(1,2,4);
-	edge E5(1,2,5);
-	edge E6(1,2,6);
-	edge E7(1,2,7);
-	edge E8(1,2,8);
-	edge E9(1,2,120);
-	edge E10(1,2,20);
-	edge E11(1,2,10);
+//Kruskal's algorithm for minimun spanning tree
+void Kruskal(unsigned int** M, const unsigned int& size){
+	//Variavles
+	edge aux;
 
-	pq.push(E);
-	pq.push(E2);
-	pq.push(E3);
-	pq.push(E4);
-	pq.push(E5);
-	pq.push(E6);
-	pq.push(E7);
-	pq.push(E8);
-	pq.push(E9);
-	pq.push(E10);
-	pq.push(E11);
+	//Min heap for edges
+	std::priority_queue<edge,std::vector<edge>,comparator> pq;
+
+	//Array of vertex
+	unsigned int* V = new unsigned int[size];
+
+	//Read all the edges and add them to the minHeap
+	for(unsigned int i=0;i<size;i++){
+		for(unsigned int j=0;j<size;j++){
+			//Check if edge exists between the i and j vertex
+			if(M[i][j]!=0){
+				//std::cout<<M[i][j]<<"||"<<i<<"||"<<j<<std::endl;
+				aux.set(i, j, M[i][j]);
+				//std::cout<<"AUX: "<<aux<<std::endl;
+				pq.push(aux);
+			}
+		}
+	}
 
 	int s = pq.size();
-	for(int i=0;i<s;i++){
+	for(unsigned int i=0;i<s;i++){
 		std::cout<<pq.top();
 		pq.pop();
 	}

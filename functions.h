@@ -1,8 +1,6 @@
 #ifndef FUNCTIONS_H_INCLUDED
 #define FUNCTIONS_H_INCLUDED
 
-#include <Vector>
-#include <queue>
 #include "point.h"
 #include "edge.h"
 #include "comparator.h"
@@ -21,6 +19,6 @@ void test();
 
 //Kruskal algorithm
 
-void Kruskal(unsigned int** M, const unsigned int& size, std::priority_queue<edge,std::vector<edge>,comparator>& pq);
+void Kruskal(unsigned int** M, const unsigned int& size);
 
 #endif
