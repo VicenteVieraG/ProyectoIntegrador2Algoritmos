@@ -59,7 +59,7 @@ void readInput(unsigned int& colonias, unsigned int** distancias, unsigned int**
 }
 
 //Prints the matrix based in the size
-void printMatrix(unsigned int** M, unsigned int& size){
+void printMatrix(const unsigned int** M, const unsigned int& size){
 	for(int i=0;i<size;i++){
 		for(int j=0;j<size;j++){
 			std::cout<<M[i][j]<<std::endl;
@@ -68,14 +68,14 @@ void printMatrix(unsigned int** M, unsigned int& size){
 }
 
 //Returns the root node of the Disjoint set data of nodes
-unsigned int Root(unsigned int* V, unsigned int i){
+unsigned int Root(const unsigned int* V, const unsigned int& i){
 	//Follos the parents tree until the node whose parent it´s it self
 	if(V[i]==i)return i;
 	return Root(V, V[i]);
 }
 
 //Makes the operation Union(A,B) in the Vertex array
-void Union(unsigned int* V, edge E){
+void Union(unsigned int* V, const edge& E){
 	//Get the nodes of the edge
 	unsigned int A = E.src;
 	unsigned int B = E.dest;
@@ -111,29 +111,37 @@ void edge::set(const unsigned int& src, const unsigned int& dest, const unsigned
 void Kruskal(unsigned int** M, const unsigned int& size){
 	//Variavles
 	edge aux;
+	int pqsize;
 
 	//Min heap for edges
 	std::priority_queue<edge,std::vector<edge>,comparator> pq;
 
 	//Array of vertex
 	unsigned int* V = new unsigned int[size];
+	for(unsigned int i=0;i<size;i++){
+		V[i] = i;
+	}
 
 	//Read all the edges and add them to the minHeap
 	for(unsigned int i=0;i<size;i++){
 		for(unsigned int j=0;j<size;j++){
 			//Check if edge exists between the i and j vertex
 			if(M[i][j]!=0){
-				//std::cout<<M[i][j]<<"||"<<i<<"||"<<j<<std::endl;
 				aux.set(i, j, M[i][j]);
-				//std::cout<<"AUX: "<<aux<<std::endl;
 				pq.push(aux);
 			}
 		}
 	}
 
-	int s = pq.size();
-	for(unsigned int i=0;i<s;i++){
-		std::cout<<pq.top();
+	//Start building the three
+	pqsize = pq.size();
+	for(int i=0;!pq.empty();i++){
+		//Check if there are no cycles create a Union of the sets
+		if(!Find(V, pq.top()))Union(V, pq.top());
 		pq.pop();
+	}
+
+	for(int i=0;i<size;i++){
+		std::cout<<i<<": "<<V[i]<<std::endl;
 	}
 }

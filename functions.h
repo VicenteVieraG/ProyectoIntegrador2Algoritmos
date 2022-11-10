@@ -12,9 +12,9 @@ void printMatrix(unsigned int**,unsigned int&);
 
 //Disjoint Set Union functions
 
-void Union(unsigned int* V, edge E);
+void Union(unsigned int* V, const edge& E);
 bool Find(unsigned int* V, edge E);
-unsigned int Root(unsigned int* V, unsigned int i);
+unsigned int Root(const unsigned int* V, const unsigned int& i);
 void test();
 
 //Kruskal algorithm
