@@ -1,6 +1,8 @@
 #ifndef EDGE_H
 #define EDGE_H
 
+#include <iostream>
+
 class edge{
     public:
         unsigned int src = 0;
@@ -10,7 +12,9 @@ class edge{
         edge() = default;
         edge(unsigned int _src, unsigned int _dest, unsigned int _weight): src(_src), dest(_dest), weight(_weight){}
         //Functions
-        
+        friend std::ostream& operator<<(std::ostream& os, const edge& E){
+            os<<E.dest<<","<<E.dest<<"||"<<E.weight<<std::endl;
+        }
 };
 
 #endif

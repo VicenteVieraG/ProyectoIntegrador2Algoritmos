@@ -1,6 +1,9 @@
 #include <iostream>
 #include <string>
+#include <vector>
+#include <queue>
 #include "functions.h"
+#include "comparator.h"
 #include "point.h"
 #include "edge.h"
 
@@ -90,4 +93,43 @@ bool Find(unsigned int* V, edge E){
 	unsigned int B = E.dest;
 	if(Root(V, A) == Root(V, B))return true;
 	return false;
+}
+
+//Making the function class for the comparison in the heap
+bool comparator::operator()(const edge& E, const edge& E2){
+	return E.weight>E2.weight;
+}
+
+std::priority_queue<edge,std::vector<edge>,comparator> pq;
+
+void test(){
+	edge E(1,2,1);
+	edge E2(1,2,2);
+	edge E3(1,2,3);
+	edge E4(1,2,4);
+	edge E5(1,2,5);
+	edge E6(1,2,6);
+	edge E7(1,2,7);
+	edge E8(1,2,8);
+	edge E9(1,2,120);
+	edge E10(1,2,20);
+	edge E11(1,2,10);
+
+	pq.push(E);
+	pq.push(E2);
+	pq.push(E3);
+	pq.push(E4);
+	pq.push(E5);
+	pq.push(E6);
+	pq.push(E7);
+	pq.push(E8);
+	pq.push(E9);
+	pq.push(E10);
+	pq.push(E11);
+
+	int s = pq.size();
+	for(int i=0;i<s;i++){
+		std::cout<<pq.top();
+		pq.pop();
+	}
 }
