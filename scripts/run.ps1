@@ -1,3 +1,5 @@
 make
-Get-Content tests/p.txt | .\main.exe
+Get-ChildItem .\tests | ForEach-Object{
+    Get-Content $_.FullName | .\main.exe 
+}
 make clean
