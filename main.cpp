@@ -1,7 +1,7 @@
 #include <iostream>
-#include "functions.h"
-#include "point.h"
-#include "edge.h"
+#include "headers/functions.h"
+#include "headers/point.h"
+#include "headers/edge.h"
 
 int main(int argc, char** argv){
     //Variables
@@ -12,11 +12,6 @@ int main(int argc, char** argv){
     unsigned int** flujo = new unsigned int*[colonias];
 
     readInput(colonias, distancias, flujo, points);
-    // printMatrix(flujo, colonias);
-    //unsigned int arr[] = {2,0,4,4,4,5};
-    //Union(arr, E);
-    //std::cout<<Find(arr, E);
-    //test();
     Kruskal(distancias, colonias);
 
 

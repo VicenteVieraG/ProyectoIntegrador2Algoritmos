@@ -2,10 +2,10 @@
 #include <string>
 #include <vector>
 #include <queue>
-#include "functions.h"
-#include "comparator.h"
-#include "point.h"
-#include "edge.h"
+#include "../headers/functions.h"
+#include "../headers/comparator.h"
+#include "../headers/point.h"
+#include "../headers/edge.h"
 
 //Declarations
 
@@ -116,7 +116,7 @@ void edge::set(const unsigned int& src, const unsigned int& dest, const unsigned
 //Main algorithm complexity: O(|E|(4|V|+log(|E|)))
 //Complete function complexity: O(|V|+|E|log(|E|)+|E|(4|V|+log(|E|))+|V|) => O(2|V|+2|E|log(|E|)+4|E||V|) => O(2(|V|+|E|+|E|log(|E|)+2|E||V|)) => O(|V|+|E|+|E|log(|E|)+|E||V|) => O(|E|(|V|+1+log(|E|)+|V|)) => O(|E|(|V|+log(|E|)+|V|)) => O(|E|(|V|+log(|E|))) => O(|E||V|+|E|log(|E|))
 void Kruskal(unsigned int** M, const unsigned int& size){
-	//Variavles
+	//Variables
 	edge aux;
 	int pqsize;
 	char E = 65;
@@ -142,15 +142,17 @@ void Kruskal(unsigned int** M, const unsigned int& size){
 	}
 
 	//Start building the three
-	pqsize = pq.size();
-	for(int i=0;!pq.empty();i++){
-		//Check if there are no cycles create a Union of the sets
+	while(!pq.empty()){
+		//Check if there are no cycles, create a Union of the sets
 		if(!Find(V, pq.top()))Union(V, pq.top());
 		pq.pop();
 	}
 
 	//Print the edges
+	std::cout<<"::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"<<std::endl;
+	std::cout<<"Primera parte: "<<std::endl<<std::endl;
 	for(int i=0;i<size;i++){
 		std::cout<<"("<<char(E+i)<<","<<char(E+V[i])<<")"<<std::endl;
 	}
+	std::cout<<"::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"<<std::endl;
 }
