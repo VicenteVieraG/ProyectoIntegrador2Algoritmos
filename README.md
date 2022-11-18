@@ -3,7 +3,7 @@
 ## Created by:
 - Vicente Javier Viera Guízar | A01639784
 - Renet de Jesús Pérez Gómez | A01640555
-- Carlos García Mercado |
+- Carlos García Mercado | A01633757
 ## Creation date:
 - 08/11/2022
 # Scripts Gide
@@ -92,3 +92,23 @@ The concept of the Kruskal's algorithm is simple but consists of several parts t
 
 
 </div>
+
+# Part Three
+## Aproach:
+<div style="text-align: justify">
+To solve this problem, the __Ford Fulkerson__ algorithm wasa implement, thsi ensure the maximun flux using all available nodes in the graph.
+
+The Ford Fulkerson algortihm, finds a path from source node to sink node through a BFS of the graph, once found, itr verifies the maximum flux that can fullt pass through all the nodes, taking in to consideration de residual flux left by previous paths found. Once determined the maximun flux of the path the overall flux and residual graph are updated. This is repeted until the BFS isn´t able to find a path from source to sink.
+</div>
+
+# Algorithms Implemented:
+## BFS:
+### Description:
+>BFS use to find a path from source to sink in a graph considering flux
+### Time Complexity:
+>Complexity: O(NumOfVerticies^2)
+## Ford fulkerson:
+### Description:
+>Ford Fulkerson for maximum flux in a weighthed graph
+### Time Complexity:
+>Main algorithm complexity: O(MaxFlux*E)

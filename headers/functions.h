@@ -24,6 +24,12 @@ unsigned int Root(const unsigned int* V, const unsigned int& i);
 
 void Kruskal(unsigned int** M, const unsigned int& size);
 
+// Ford-Fulkenson algorithm
+
+void terceraParte( unsigned int** flux, int colonias);
+bool bfs(unsigned int** residualFlux,int colonias, int source, int sink, int pathStorage[] );
+int fordFulkerson( unsigned int** flux, int colonias, int source, int sink);
+
 //Nearest Neighbor
 
 void NearestNeighbor(unsigned int** M, const unsigned int& size);
