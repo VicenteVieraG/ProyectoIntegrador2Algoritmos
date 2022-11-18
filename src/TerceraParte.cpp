@@ -5,6 +5,8 @@
 #include <algorithm>
 #include "../headers/functions.h"
 
+#define INT_MAX 2147483647;
+
 void terceraParte( unsigned int** flux, int colonias){
     int source = 0, sink = colonias -1;
     
@@ -17,7 +19,9 @@ void terceraParte( unsigned int** flux, int colonias){
 bool bfs(unsigned int** residualFlux,int colonias, int source, int sink, int pathStorage[]){
     bool visited[colonias];
     // Mark all colonias as not visited
-    memset(visited, 0, sizeof(visited));
+    for(int i = 0; i < colonias; i++){
+        visited[i] = 0;
+    }
 
  
     // Standard BFS
