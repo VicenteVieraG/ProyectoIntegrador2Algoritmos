@@ -13,8 +13,10 @@ int main(int argc, char** argv){
 
     readInput(colonias, distancias, flujo, points);
     Kruskal(distancias, colonias);
-    
+
     terceraParte(flujo, colonias);
+
+    NearestNeighbor(distancias, colonias);
 
     return 0;
 }

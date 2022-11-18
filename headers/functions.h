@@ -1,6 +1,10 @@
 #ifndef FUNCTIONS_H_INCLUDED
 #define FUNCTIONS_H_INCLUDED
 
+#include <queue>
+#include <limits>
+#include <unordered_map>
+
 #include "point.h"
 #include "edge.h"
 #include "comparator.h"
@@ -25,5 +29,10 @@ void Kruskal(unsigned int** M, const unsigned int& size);
 void terceraParte( unsigned int** flux, int colonias);
 bool bfs(unsigned int** residualFlux,int colonias, int source, int sink, int pathStorage[] );
 int fordFulkerson( unsigned int** flux, int colonias, int source, int sink);
+
+//Nearest Neighbor
+
+void NearestNeighbor(unsigned int** M, const unsigned int& size);
+bool DFS(unsigned int** M, const unsigned int& size, std::unordered_map<unsigned int,bool>& visitedNodes, std::queue<unsigned int>& remainingNodes, unsigned int currentNode, std::queue<unsigned int>& path);
 
 #endif

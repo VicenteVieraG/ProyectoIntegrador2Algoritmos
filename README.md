@@ -6,6 +6,14 @@
 - Carlos García Mercado | A01633757
 ## Creation date:
 - 08/11/2022
+# Scripts Gide
+## Run
+### __CMake Needed__
+### For Windows with CMake:
+>./src/run
+## Build
+### Biuild for Windows
+>.src/build
 # Problem Overview
 During the year 2020 the whole world was affected by an event that nobody expected: the pandemic caused by COVID-19. In every country on the planet, sanitary measures were taken to try to contain the pandemic. One of these measures was to send the entire population to their homes,
 moving a large part of face-to-face activities to a remote model in which Internet Service Provider companies (ISPs) took a more than leading role. Many people moved to the modality of remote work, or home-office,
@@ -40,6 +48,7 @@ given a new contract for the service, which is the closest geographical center t
 # Part One
 ## Aproach:
 <div style="text-align: justify">
+
 To solve this problem a __Minimun Spanning Tree (MST)__ was implemented through the __Kruskal's MST algorithm__. With this aproach we ensure to connect all nodes with the minimun weight possible.
 
 The concept of the Kruskal's algorithm is simple but consists of several parts that need to be binded together. How this works is by first adding all the edges to a __min heap structure__ then, for each edge in the min heap we verify that no cycles are being created and just after this we make a relation between the edges. This Union and Cycle verifications are easy to do with the implementation of a __Disjoint Set Union Tree (DSUT)__ where the nodes are initially stored, then sorted with Kruskal´s algorithm and finally getting the MST with the relations created between the nodes.
@@ -77,3 +86,9 @@ The concept of the Kruskal's algorithm is simple but consists of several parts t
 ### Time Complexity:
 >Main algorithm complexity: O(|E|(4|V|+log(|E|)))  
 >Complete function complexity: O(|V|+|E|log(|E|)+|E|(4|V|+log(|E|))+|V|) => O(2|V|+2|E|log(|E|)+4|E||V|) => O(2(|V|+|E|+|E|log(|E|)+2|E||V|)) => O(|V|+|E|+|E|log(|E|)+|E||V|) => O(|E|(|V|+1+log(|E|)+|V|)) => O(|E|(|V|+log(|E|)+|V|)) => O(|E|(|V|+log(|E|))) => O(|E||V|+|E|log(|E|))
+# Part Two
+<div style="text-align: justify">
+
+
+
+</div>
