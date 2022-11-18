@@ -1,23 +1,27 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <limits>
 #include <queue>
 #include <algorithm>
 #include "../headers/functions.h"
 
-#define INT_MAX 2147483647;
-
 void terceraParte( unsigned int** flux, int colonias){
     int source = 0, sink = colonias -1;
+
+    std::cout<<"::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"<<std::endl;
+	std::cout<<"Tercera Parte:"<<std::endl<<std::endl;
     
-    std::cout << "Flujo Máximo: " << fordFulkerson(flux,colonias,source,sink) <<std::endl;
+    std::cout << "Flujo Máximo: " <<fordFulkerson(flux,colonias,source,sink)<<std::endl;
+
+    std::cout<<"::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"<<std::endl;
 }
 
 // Finds a path from source to sink, and make sure there is still
 // space for flux
 // Complexity : O(NumOfVerticies^2)
 bool bfs(unsigned int** residualFlux,int colonias, int source, int sink, int pathStorage[]){
-    bool visited[colonias];
+    bool* visited = new bool[colonias];
     // Mark all colonias as not visited
     for(int i = 0; i < colonias; i++){
         visited[i] = 0;
@@ -65,14 +69,14 @@ int fordFulkerson(unsigned int** flux,int colonias, int source, int sink) {
     unsigned int** residualGraph = flux;
     
     // Filled by bfs axilary function
-    int pathStorage[colonias]; 
+    int* pathStorage = new int[colonias]; 
  
     int maxFlux = 0; 
  
     // While there is still room for more flux on paths, augment it
     while (bfs(residualGraph,colonias, source, sink, pathStorage)) {
         
-        int pathFlow = INT_MAX;
+        int pathFlow = INT32_MAX;
         for (v = sink; v != source; v = pathStorage[v]) {
             u = pathStorage[v];
             pathFlow = std::min(pathFlow, (int) residualGraph[u][v]);
