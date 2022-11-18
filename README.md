@@ -92,6 +92,7 @@ The concept of the Kruskal's algorithm is simple but consists of several parts t
 
 
 </div>
+
 # Part Three
 ## Aproach:
 <div style="text-align: justify">
