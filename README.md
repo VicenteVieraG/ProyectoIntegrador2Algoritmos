@@ -9,11 +9,19 @@
 # Scripts Gide
 ## Run
 ### __CMake Needed__
-### For Windows with CMake:
+### Run All Tests For Windows with CMake:
 >./src/run
 ## Build
 ### Biuild for Windows
->.src/build
+>./src/build
+## Run with no CMake
+### Run All Tests for Windows
+>./src/rnmk
+## Build with no CMake
+### Build for Windows
+>./src/buildnmk
+### Build for Linux/Unix withouth CMake
+>./src/buildbs
 # Problem Overview
 During the year 2020 the whole world was affected by an event that nobody expected: the pandemic caused by COVID-19. In every country on the planet, sanitary measures were taken to try to contain the pandemic. One of these measures was to send the entire population to their homes,
 moving a large part of face-to-face activities to a remote model in which Internet Service Provider companies (ISPs) took a more than leading role. Many people moved to the modality of remote work, or home-office,
@@ -59,7 +67,7 @@ The concept of the Kruskal's algorithm is simple but consists of several parts t
 ### Description:
 >Reads the specified input and returns two matrixes with the data and an array of points
 ### Time complexity:
->O(n+n^2+n^2+n*m) => O(n(1+2n+m)) => O(n^2+nm)
+>$O(n+n^2+n^2+n*m) => O(n(1+2n+m)) => O(n^2+nm)$
 ## printMatrix:
 ### Description:
 >Prints the matrix based in the size
@@ -69,34 +77,44 @@ The concept of the Kruskal's algorithm is simple but consists of several parts t
 ### Description:
 >Returns the root node of the Disjoint set data of nodes
 ### Time Complexity:
->Complexity: O(n)
+>Complexity: $O(n)$
 ## Union:
 ### Description:
 >Makes the operation Union(A,B) in the Vertex array
 ### Time Complexity:
->Complexity: O(2n) => O(n)
+>Complexity: $O(2n) => O(n)$
 ## Find:
 ### Description:
 >Makes operaton Find(A,B).Finds if there is a cycle.If there is a cycle it returns true, else false.If both node´s root are the same means they are in the same subset therefore, there is a cycle.
 ### Time Complexity:
->Complexity: O(2n) => O(n)
+>Complexity: $O(2n) => O(n)$
 ## Kruskal:
 ### Description:
 >Kruskal's algorithm for minimun spanning tree
 ### Time Complexity:
->Main algorithm complexity: O(|E|(4|V|+log(|E|)))  
->Complete function complexity: O(|V|+|E|log(|E|)+|E|(4|V|+log(|E|))+|V|) => O(2|V|+2|E|log(|E|)+4|E||V|) => O(2(|V|+|E|+|E|log(|E|)+2|E||V|)) => O(|V|+|E|+|E|log(|E|)+|E||V|) => O(|E|(|V|+1+log(|E|)+|V|)) => O(|E|(|V|+log(|E|)+|V|)) => O(|E|(|V|+log(|E|))) => O(|E||V|+|E|log(|E|))
+>Main algorithm complexity: $O(|E|(4|V|+log(|E|)))$  
+>Complete function complexity: $O(|V|+|E|log(|E|)+|E|(4|V|+log(|E|))+|V|) => O(2|V|+2|E|log(|E|)+4|E||V|) => O(2(|V|+|E|+|E|log(|E|)+2|E||V|)) => O(|V|+|E|+|E|log(|E|)+|E||V|) => O(|E|(|V|+1+log(|E|)+|V|)) => O(|E|(|V|+log(|E|)+|V|)) => O(|E|(|V|+log(|E|))) => O(|E||V|+|E|log(|E|))$
 # Part Two
+## Aproach:
 <div style="text-align: justify">
 
-
-
+The algorithm implemented for this problem was the __Nearest Neighbor Algorithm__, Basicly a DFS with minimun weighted path. The function works __Recursively__ entering in a node and checking for each of it´s neighbors nodes wich one has the __minimun weight__ and if it has not been visited yet, if that case is found visits the node and the function is repeated.
 </div>
 
+# Algorithms Implemented
+## DFS
+### Description:
+>Depth First Search traverse all graph with min weight
+### Time complexity:
+>$O(n^2)$
+## Nearest Neighbor
+### Description:
+>Is the setter function for the __DFS__
 # Part Three
 ## Aproach:
 <div style="text-align: justify">
-To solve this problem, the __Ford Fulkerson__ algorithm wasa implement, thsi ensure the maximun flux using all available nodes in the graph.
+
+To solve this problem, the __Ford Fulkerson__ algorithm was implement, thsi ensure the maximun flux using all available nodes in the graph.
 
 The Ford Fulkerson algortihm, finds a path from source node to sink node through a BFS of the graph, once found, itr verifies the maximum flux that can fullt pass through all the nodes, taking in to consideration de residual flux left by previous paths found. Once determined the maximun flux of the path the overall flux and residual graph are updated. This is repeted until the BFS isn´t able to find a path from source to sink.
 </div>
@@ -106,9 +124,9 @@ The Ford Fulkerson algortihm, finds a path from source node to sink node through
 ### Description:
 >BFS use to find a path from source to sink in a graph considering flux
 ### Time Complexity:
->Complexity: O(NumOfVerticies^2)
+>Complexity: $O(NumOfVerticies^2)$
 ## Ford fulkerson:
 ### Description:
 >Ford Fulkerson for maximum flux in a weighthed graph
 ### Time Complexity:
->Main algorithm complexity: O(MaxFlux*E)
+>Main algorithm complexity: $O(MaxFlux*E)$
