@@ -4,6 +4,7 @@
 #include <queue>
 #include <limits>
 #include <unordered_map>
+#include <vector>
 
 #include "point.h"
 #include "edge.h"
@@ -11,7 +12,7 @@
 
 //Basic Input Output functions
 
-void readInput(unsigned int& colonias, unsigned int** distancias, unsigned int** flujo, point* points);
+void readInput(unsigned int& colonias, unsigned int** distancias, unsigned int** flujo, std::vector<point>& P);
 void printMatrix(unsigned int**,unsigned int&);
 
 //Disjoint Set Union functions
@@ -28,5 +29,9 @@ void Kruskal(unsigned int** M, const unsigned int& size);
 
 void NearestNeighbor(unsigned int** M, const unsigned int& size);
 bool DFS(unsigned int** M, const unsigned int& size, std::unordered_map<unsigned int,bool>& visitedNodes, std::queue<unsigned int>& remainingNodes, unsigned int currentNode, std::queue<unsigned int>& path);
+
+//Graham algorithm
+
+void GrahamAlgorithm(std::vector<point>&);
 
 #endif

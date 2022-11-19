@@ -92,3 +92,81 @@ The concept of the Kruskal's algorithm is simple but consists of several parts t
 
 
 </div>
+
+# Part Fourth
+## Aproach
+<div style="text-align: justify">
+
+In this part we implement a __convex hull__ through the __Graham scanning algorithm__.
+As input we take the coordinates that represent the contracting centers where customers can go, as a result of the algorithm we obtain the minimum polynomial that encompasses all the points.
+
+<div>
+
+# Algorithms Implemented:
+## nextToTop
+### Description:
+>Function that returns the next value of the actual "top" from the stack
+
+### Time complexity:
+>Time Complexity: $O(1)$
+
+
+## orientation_point
+### Description:
+>Function that calculates the orientation of the points
+
+### Time complexity:
+>Time Complexity: $O(1)$
+
+# Algorithms Implemented:
+## compute_orientation
+### Description:
+>Function that help us to determinate the type of oriantation.
+
+### Time complexity:
+>Time Complexity: $O(1)$
+
+## distanceTwopoints
+### Description:
+>Function that calculates the distance between 2 points
+
+### Time complexity:
+>Time Complexity: $O(1)$
+
+## swap
+### Description:
+>Function that swap the reference of two point values
+
+### Time complexity:
+>Time Complexity: $O(1)$
+
+## compare
+### Description:
+>Auxiliary function that will help the quick sort algorithm to organize the points in ascending order, in order of angle (taking as reference the point most
+close to "y").
+
+>Since the program makes use of "point orientation", the order of hierarchy for
+The decision of which goes first is:
+
+    2 = Time Trial
+    1 = Clockwise
+    0 = Collinear
+
+>If there is a point with the collinear case, then it will be arranged in order of which is closest to the closest point to the "y".
+
+### Time complexity:
+>Time Complexity: $O(1)$
+
+
+## GrahamAlgorithm
+### Description:
+>This function implements the graham scan algorithm, roughly speaking the algorithm first finds the smallest point in "y".
+Since we have identified our point, we organize by "angle".
+
+>Here I make a parenthesis since our implementation does not use trigonometric functions, instead, the "orientation of the points" is used, having the smallest point in "y" as our pivot point to determine the orientation, the orientation that we are looking for specifically is "counterclockwise".
+After organizing them, we eliminate those points that have repeated angles (collinear angles).
+
+>Having already filtered our points, with the rest we will begin to unite them to create our convex hull (during the test we will discard those points that do not have a "counterclockwise" order).
+
+### Time complexity:
+>Time Complexity: $O(nLogn)$
