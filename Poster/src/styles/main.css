@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap');
+
+:root{
+    --opac: 1;
+}
+
 #root{
     width: 100%;
     height: 100%;
@@ -8,11 +14,44 @@
     width: 100%;
     height: 40vw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: xx-large;
-    color: white;
     object-fit: fill;
     background-image: url("../assets/redAesthetic.jpg");
     background-size: cover;
+    animation: fade-in-header 5s;
+}
+
+.noDots{
+    list-style: none
+}
+
+p.names{
+    font-size: large;
+    font-family: 'Sora', sans-serif;
+    text-decoration: none;
+    color: white;
+}
+p.title{
+    font-size: xx-large;
+    font-family: 'Sora', sans-serif;
+    text-decoration: underline white;
+    color: white;
+}
+
+div.intro{
+    animation: namesIntroduction 10s;
+}
+
+@keyframes fade-in-header{
+    from{opacity: 0}
+    to{opacity: 1}
+}
+
+@keyframes namesIntroduction{
+    0% {opacity: 0; transform: translateY(100%)}
+    50% {opacity: 0}
+    70% {opacity: 1}
+    100% {}
 }
