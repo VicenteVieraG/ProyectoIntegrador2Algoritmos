@@ -1,18 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap');
 
 :root{
-    --opac: 1;
+    --opac: 2;
 }
 
 #root{
     width: 100%;
     height: 100%;
     background-color: black;
+    padding: 0%;
+    margin: 0%;
 }
 
 .headerContainer{
     width: 100%;
     height: 40vw;
+    padding: 0%;
+    margin: 0%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,6 +46,34 @@ p.title{
 
 div.intro{
     animation: namesIntroduction 10s;
+}
+
+div.SPPresentation{
+    width: 100%;
+    height: 100%;
+    color: white;
+    background: black;
+    display: flex;
+    justify-content: space-between;
+}
+div.SPContainer{
+    width: 30%;
+    height: 100%;
+    padding-left: 40px;
+    background-color: blue;
+    white-space: pre-line;
+}
+p.SPTitle{
+    font-size: xx-large;
+    font-family: 'Sora', sans-serif;
+}
+label.SP{
+    font-size: large;
+    font-family: 'Sora', sans-serif;
+}
+p.SPText{
+    font-size: medium;
+    font-family: 'Sora', sans-serif;
 }
 
 @keyframes fade-in-header{
